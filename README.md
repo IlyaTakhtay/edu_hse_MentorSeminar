@@ -1,44 +1,45 @@
-ShortURL: Сервис для сокращения длинных URL, перенаправления и статистики.
-TODO App: Сервис для управления задачами с CRUD-операциями.
-Оба приложения на FastAPI, данные хранятся в SQLite.
+# Project: TODO App & ShortURL Service
 
-🛠️ Запуск с Docker:
-# TODO App
-Notifications API Endpoints:
-  GET /items/{item_id}/notifications
-    Получить уведомления для элемента.
-  POST /items/{item_id}/notifications
-    Создать уведомление для элемента.
-  GET /items/{item_id}/notifications/{notification_id}
-    Получить конкретное уведомление.
-  DELETE /items/{item_id}/notifications
-    Удалить все уведомления для элемента.
-  DELETE /items/{item_id}/notifications/{notification_id}
-    Удалить конкретное уведомление.
-  GET /items
-    Получить все элементы.
-  POST /items
-    Создать новый элемент.
-  GET /items/{item_id}
-    Получить информацию о конкретном элементе.
-  PUT /items/{item_id}
-    Обновить информацию об элементе.
-  DELETE /items/{item_id}
-    Удалить элемент.
-Запуск
-  docker run --name todo -p 8000:80 -v todo_data:/app/data i11usi0n/todo-service:latest
+This project includes two applications:
+
+1. **TODO App**: A service for managing tasks with CRUD operations.
+2. **ShortURL App**: A service for shortening URLs, redirection, and tracking statistics.
+
+Both applications are built using FastAPI and store data in an SQLite database.
+
+---
+
+## 🚀 Getting Started
+
+### Docker Setup
+
+To run both applications with Docker, use the following commands.
+
+#### TODO App
+
+**API Endpoints:**
+- `GET /items/{item_id}/notifications` – Get notifications for an item.
+- `POST /items/{item_id}/notifications` – Create a notification for an item.
+- `GET /items/{item_id}/notifications/{notification_id}` – Get a specific notification.
+- `DELETE /items/{item_id}/notifications` – Delete all notifications for an item.
+- `DELETE /items/{item_id}/notifications/{notification_id}` – Delete a specific notification.
+- `GET /items` – Get all items.
+- `POST /items` – Create a new item.
+- `GET /items/{item_id}` – Get information about a specific item.
+- `PUT /items/{item_id}` – Update an item.
+- `DELETE /items/{item_id}` – Delete an item.
+## Run with Docker:
+docker run --name todo_app -p 8000:80 -v todo_data:/app/data i11usi0n/todo-service:latest
+
 # ShortURL App
-ShortURL API Endpoints:
-  POST /shorten
-    Сокращение URL.
-    Параметр: modifier (optional).
-  GET /{short_id}
-    Перенаправление по сокращённому URL.
-  GET /stats/{short_id}
-    Статистика использования сокращённой ссылки.
-Запуск
-  docker run --name shorturl -p 8000:80 -v shorturl_data:/app/data i11usi0n/shorturl_app:latest
+## API Endpoints:
 
-📑 Доступ к API:
-TODO: http://localhost:8000/docs
-ShortURL: http://localhost:8001/docs
+- `POST /shorten` – Shorten a URL. (Optional parameter: `modifier`)
+- `GET /{short_id}` – Redirect to the original URL from the shortened one.
+- `GET /stats/{short_id}` – Get usage statistics for the shortened URL.
+
+## Run with Docker:
+docker run --name shorturl -p 8000:80 -v shorturl_data:/app/data i11usi0n/shorturl_app:latest
+
+📑 Access to API Documentation
+http://localhost:8000/docs
